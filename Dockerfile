@@ -7,11 +7,8 @@ LABEL maintainer="Claudio Dekker <claudio@ubient.net>"
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /tmp
 
-RUN apt-get update && apt-get install -y \
-        ssh-client
-
 # Install packages
-RUN apk add zip unzip libzip-dev zlib-dev libpng-dev git
+RUN apk add zip unzip libzip-dev zlib-dev libpng-dev git openssh
 
 # Install required extenstions for laravel
 # https://laravel.com/docs/6.x#server-requirements
