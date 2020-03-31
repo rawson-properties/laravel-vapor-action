@@ -8,12 +8,12 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /tmp
 
 # Install packages
-RUN apk add zip unzip libzip-dev zlib-dev libpng-dev
+RUN apk add zip unzip libzip-dev zlib-dev libpng-dev git
 
 # Install required extenstions for laravel
 # https://laravel.com/docs/6.x#server-requirements
 RUN apk add libxml2-dev oniguruma-dev oniguruma && \
-    docker-php-ext-install bcmath gd mbstring pcntl tokenizer xml zip
+    docker-php-ext-install bcmath mbstring pcntl tokenizer xml
 
 # Install composer script
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
