@@ -13,7 +13,7 @@ RUN apk add zip unzip libzip-dev zlib-dev libpng-dev git openssh-client
 # Install required extenstions for laravel
 # https://laravel.com/docs/6.x#server-requirements
 RUN apk add libxml2-dev oniguruma-dev oniguruma && \
-    docker-php-ext-install bcmath mbstring pcntl tokenizer xml
+    docker-php-ext-install bcmath mbstring pcntl tokenizer xml memcached
 
 # Install composer script
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
