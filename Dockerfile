@@ -1,4 +1,4 @@
-FROM laradock/workspace:2.5-7.4
+FROM laradock/workspace:2.6.1-7.4
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /composer
