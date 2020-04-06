@@ -1,10 +1,23 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 set -e
 
+echo "all commands are executed as $(whoami)"
+
+mkdir -p $HOME/.ssh/
+ssh-keyscan -H github.com >> $HOME/.ssh/known_hosts 2> /dev/null
+
+if [ ${GITHUB_SECRET} ]; then
+    echo "Setting up Github OAuth token"
+    composer config --global github-oauth.github.com ${GITHUB_SECRET}
+else
+    echo "No private repos accessible due to GITHUB_SECRET was not provided"
+    echo "You can generate one by accessing https://github.com/settings/tokens/new?scopes=repo&description=Github%20Action"
+fi
+
 if [ -z ${VAPOR_API_TOKEN} ]; then
-    echo "To interact with Vapor directly from Github, you will need to add a VAPOR_API_TOKEN to your project secrets." >&2
-    echo "You may generate an API token in your Vapor API settings dashboard: https://vapor.laravel.com/app/account/api-tokens" >&2
+    echo "You need to add a VAPOR_API_TOKEN to your project secrets!"
+    echo "Generate one under https://vapor.laravel.com/app/account/api-tokens"
     exit 1
 fi
 
