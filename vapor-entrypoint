@@ -7,11 +7,11 @@ echo "all commands are executed as $(whoami)"
 mkdir -p $HOME/.ssh/
 ssh-keyscan -H github.com >> $HOME/.ssh/known_hosts 2> /dev/null
 
-if [ ${GITHUB_SECRET} ]; then
+if [ ${COMPOSER_SECRET} ]; then
     echo "Setting up Github OAuth token"
-    composer config --global github-oauth.github.com ${GITHUB_SECRET}
+    composer config --global github-oauth.github.com ${COMPOSER_SECRET}
 else
-    echo "No private repos accessible due to GITHUB_SECRET was not provided"
+    echo "No private repos accessible due to COMPOSER_SECRET was not provided"
     echo "You can generate one by accessing https://github.com/settings/tokens/new?scopes=repo&description=Github%20Action"
 fi
 
