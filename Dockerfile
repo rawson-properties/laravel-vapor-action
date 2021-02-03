@@ -6,7 +6,7 @@ ENV PATH "/composer/vendor/bin:~/.local/bin:$PATH"
 
 RUN set -xe && \
     apt-get update && \
-    apt-get install -y --allow nodejs-dev \
+    apt-get install -y nodejs-dev \
     node-gyp \
     libssl1.0-dev \
     npm \
