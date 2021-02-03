@@ -8,11 +8,9 @@ RUN set -xe && \
     composer global require laravel/vapor-cli && \
     composer clear-cache
 
-# Install Node.js (needed for Vapor's NPM Build)
-RUN apk add --update nodejs npm
-
 RUN set -xe && \
     apt-get update && \
+    apt-get install -y --force-yes nodejs \
     php7.4-imagick \
     openssh-client \
     unzip && \
