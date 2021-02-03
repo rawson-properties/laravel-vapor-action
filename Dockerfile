@@ -11,6 +11,7 @@ RUN set -xe && \
 RUN set -xe && \
     apt-get update && \
     apt-get install -y --force-yes nodejs \
+    npm \
     php7.4-imagick \
     openssh-client \
     unzip && \
