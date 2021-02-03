@@ -6,17 +6,17 @@ ENV PATH "/composer/vendor/bin:~/.local/bin:$PATH"
 
 RUN set -xe && \
     apt-get update && \
-    apt-get install -y nodejs-dev \
+    apt-get install -y --force-yes nodejs-dev \
     node-gyp \
     libssl1.0-dev \
     npm \
     php7.4-imagick \
     openssh-client \
-    unzip && \
-    apt-get autoremove && \
-    apt-get autoclean && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    unzip
+    # apt-get autoremove && \
+    # apt-get autoclean && \
+    # apt-get clean && \
+    # rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN set -xe && \
     composer global require laravel/vapor-cli && \
