@@ -5,12 +5,10 @@ ENV COMPOSER_HOME /composer
 ENV PATH "/composer/vendor/bin:~/.local/bin:$PATH"
 
 RUN set -xe && \
-    composer global require laravel/vapor-cli && \
-    composer clear-cache
-
-RUN set -xe && \
     apt-get update && \
-    apt-get install -y --force-yes nodejs \
+    apt-get install -y --allow nodejs-dev \
+    node-gyp \
+    libssl1.0-dev \
     npm \
     php7.4-imagick \
     openssh-client \
@@ -19,6 +17,10 @@ RUN set -xe && \
     apt-get autoclean && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN set -xe && \
+    composer global require laravel/vapor-cli && \
+    composer clear-cache
 
 # Prepare out Entrypoint (used to run Vapor commands)
 COPY vapor-entrypoint /usr/local/bin/vapor-entrypoint
