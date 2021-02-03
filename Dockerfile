@@ -5,7 +5,6 @@ ENV COMPOSER_HOME /composer
 ENV PATH "/composer/vendor/bin:~/.local/bin:$PATH"
 
 RUN set -xe && \
-    composer global require hirak/prestissimo && \
     composer global require laravel/vapor-cli && \
     composer clear-cache
 
@@ -13,7 +12,6 @@ RUN set -xe && \
 RUN apk add --update nodejs npm
 
 RUN set -xe && \
-    curl --silent --location https://deb.nodesource.com/setup_12.x | bash - && \
     apt-get update && \
     php7.4-imagick \
     openssh-client \
