@@ -5,11 +5,9 @@ ENV COMPOSER_HOME /composer
 ENV PATH "/composer/vendor/bin:~/.local/bin:$PATH"
 
 RUN set -xe && \
+    curl --silent --location https://deb.nodesource.com/setup_15.x | bash - && \
     apt-get update && \
-    apt-get install -y --force-yes nodejs-dev \
-    node-gyp \
-    libssl1.0-dev \
-    npm \
+    apt-get install -y --force-yes nodejs \
     php7.4-imagick \
     openssh-client \
     unzip
